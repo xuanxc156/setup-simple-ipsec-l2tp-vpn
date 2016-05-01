@@ -186,7 +186,7 @@ echo "Preparing various configuration files..."
 
 echo "/etc/ipsec.conf"
 
-cat > /etc/ipsec.conf <<EOF
+cat >> /etc/ipsec.conf <<EOF
 version 2.0
 config setup
   dumpdir=/var/run/pluto/
@@ -229,13 +229,13 @@ then
   echo "Backup /etc/ipsec.secrets -> /etc/ipsec.secrets.old"
 fi
 
-cat > /etc/ipsec.secrets <<EOF
+cat >> /etc/ipsec.secrets <<EOF
 $IPADDRESS  %any  : PSK "$IPSEC_PSK"
 EOF
 
 echo "/etc/xl2tpd/xl2tpd.conf"
 
-cat > /etc/xl2tpd/xl2tpd.conf <<EOF
+cat >> /etc/xl2tpd/xl2tpd.conf <<EOF
 [global]
 port = 1701
 ;debug avp = yes
@@ -256,7 +256,7 @@ EOF
 
 echo "/etc/ppp/options.xl2tpd"
 
-cat > /etc/ppp/options.xl2tpd <<EOF
+cat >> /etc/ppp/options.xl2tpd <<EOF
 ipcp-accept-local
 ipcp-accept-remote
 ms-dns 8.8.8.8
@@ -281,7 +281,7 @@ then
   echo "Backup /etc/ppp/chap-secrets -> /etc/ppp/chap-secrets.old"
 fi
 
-cat > /etc/ppp/chap-secrets <<EOF
+cat >> /etc/ppp/chap-secrets <<EOF
 # Secrets for authentication using CHAP
 # client  server  secret  IP addresses
 "$VPN_USER" "*" "$VPN_PASSWORD" "*"
@@ -289,7 +289,7 @@ EOF
 
 echo "/etc/init.d/ipsec-assist"
 
-cat > /etc/init.d/ipsec-assist <<'EOF'
+cat >> /etc/init.d/ipsec-assist <<'EOF'
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:
